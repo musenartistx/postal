@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación ATC1</title>
+    <style>
+        :root {
+            --color-primario: #0a5b73; /* Azul profundo */
+            --color-acento: #e4765d;   /* Terracota */
+            --fondo-papel: #fff4e4; /*beige*/
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: 'Georgia', serif;
+        }
+
+        /* Contenedor principal de la tarjeta */
+        .postal-container {
+            width: 500px;
+            height: 320px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .postal-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Giro de postal */
+        .postal-container:hover .postal-inner {
+            transform: rotateY(180deg);
+        }
+
+        .postal-front, .postal-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: var(--fondo-papel);
+            border: 1px solid #ddd;
+        }
+
+        /* LADO A (Frente) */
+        .postal-front {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0a5b73 0%, #164a58 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .postal-front .art-placeholder {
+            font-size: 1.2rem;
+            border: 2px dashed rgba(255,255,255,0.4);
+            padding: 40px;
+            margin: 20px;
+        }
+
+        /* --- LADO B (Mensaje) --- */
+        .postal-back {
+            transform: rotateY(180deg);
+            display: flex;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* División central */
+        .postal-back::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 20%;
+            bottom: 20%;
+            width: 1px;
+            background-color: #ccc;
+        }
+
+        .left-side {
+            flex: 1;
+            padding-right: 15px;
+        }
+
+        .right-side {
+            flex: 1;
+            padding-left: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Estampilla / Sello */
+        .stamp {
+            align-self: flex-end;
+            width: 50px;
+            height: 60px;
+            border: 2px dotted var(--color-acento);
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .stamp-circle {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--color-acento);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        /* Líneas de dirección */
+        .address-lines {
+            margin-top: auto;
+        }
+
+        .line {
+            border-bottom: 1px solid #999;
+            margin-bottom: 15px;
+            height: 20px;
+        }
+
+        .postal-text {
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.4;
+        }
+
+        h2 {
+            margin: 0;
+            color: var(--color-primario);
+            font-size: 1.4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="postal-container">
+        <div class="postal-inner">
+            
+            <div class="postal-front">
+                <h2>Diseño Artístico</h2>
+                <div class="art-placeholder">
+                    [Espacio para Obra de Arte o Fotografía]
+                </div>
+                <small>Intercambio de Arte Colaborativo</small>
+            </div>
+
+            <div class="postal-back">
+                <div class="left-side">
+                    <p class="postal-text">
+                        Estimado colega,<br><br>
+                        Esta pieza forma parte de un intercambio cultural dedicado a la preservación de la memoria histórica y la arquitectura local.<br><br>
+                        Saludos desde el centro histórico.
+                    </p>
+                </div>
+                
+                <div class="right-side">
+                    <div class="stamp">
+                        <div class="stamp-circle"></div>
+                    </div>
+                    <div class="address-lines">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
